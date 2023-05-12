@@ -33,18 +33,37 @@
 // };
 
 // asyncCall();
+//
+// const getPhotos = async () => {
+//    const response = await fetch("https://cat-fact.herokuapp.com?json=true");
+//    const photos = await response.json();
+//    return photos;
+//};
+
+//async function displayPhotos() {
+ //   const photo = await getPhotos();
+ //   const img = document.createElement("img");
+ //   img.src = `https://cat-fact.herokuapp.com${photo.url}`;
+ //   document.body.appendChild(img);
+//}
+
+//displayPhotos();
 
 const getPhotos = async () => {
-    const response = await fetch("https://cataas.com/cat?json=true");
+    const response = await fetch("https://thedogapi.com/v1/images/search?limit=10");
     const photos = await response.json();
     return photos;
-};
+  }
+  
+  async function displayPhotos() {
+    const photos = await getPhotos();
+    photos.forEach(photo => {
+      const img = document.createElement('img');
+      img.src = `https://thedogapi.com${photo.url}`;
+      document.body.appendChild(img);
+    });
+  }
+  
+  displayPhotos();
+  
 
-async function displayPhotos() {
-    const photo = await getPhotos();
-    const img = document.createElement("img");
-    img.src = `https://cataas.com${photo.url}`;
-    document.body.appendChild(img);
-}
-
-displayPhotos();
